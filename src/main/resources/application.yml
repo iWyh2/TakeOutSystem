@@ -21,4 +21,4 @@ mybatis-plus:
 
 #自定义变量
 wyh:
-  path: D:\TempFile\takeoutImage\ #文件保存路径
+  path: D:\TempFile\takeoutImage\ #外卖菜品套餐图片文件保存路径

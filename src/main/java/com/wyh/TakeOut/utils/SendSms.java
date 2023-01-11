@@ -15,8 +15,8 @@ public class SendSms {
     public static void sendMessage(String phoneNumbers,String param) {
         // Configure Credentials authentication information, including ak, secret, token
         StaticCredentialProvider provider = StaticCredentialProvider.create(Credential.builder()
-                .accessKeyId("LTAI5tRufyjPoi1uimEtrkMZ")
-                .accessKeySecret("iWhYqKHjGakPzpXOwxHwcE7yqyM1VW")
+                .accessKeyId("")
+                .accessKeySecret("")
                 .build());
 
         // Configure the Client
