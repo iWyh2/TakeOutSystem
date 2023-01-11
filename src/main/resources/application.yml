@@ -15,6 +15,10 @@ spring:
     port: 6379
     #password:
     database: 0
+  #Spring Cache配置
+  cache:
+    redis:
+      time-to-live: 1800000 #缓存数据的过期时间 单位毫秒
 
 #MP配置
 mybatis-plus:

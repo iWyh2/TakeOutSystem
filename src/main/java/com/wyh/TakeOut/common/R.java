@@ -1,11 +1,14 @@
 package com.wyh.TakeOut.common;
 
 import lombok.Data;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class R<T> {
+//实现Serializable接口 是为了能存入Redis缓存（Redis会将对象序列化然后缓存）
+public class R<T> implements Serializable {
 
     private Integer code; //编码：1成功，0和其它数字为失败
 
