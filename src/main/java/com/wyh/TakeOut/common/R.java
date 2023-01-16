@@ -1,5 +1,7 @@
 package com.wyh.TakeOut.common;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -7,15 +9,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
+@ApiModel("返回结果")
 //实现Serializable接口 是为了能存入Redis缓存（Redis会将对象序列化然后缓存）
 public class R<T> implements Serializable {
-
+    @ApiModelProperty("编码")
     private Integer code; //编码：1成功，0和其它数字为失败
 
+    @ApiModelProperty("提示信息")
     private String msg; //提示信息
 
+    @ApiModelProperty("数据")
     private T data; //数据
 
+    @ApiModelProperty("动态数据")
     private Map map = new HashMap(); //动态数据
 
     public static <T> R<T> success(T object) {

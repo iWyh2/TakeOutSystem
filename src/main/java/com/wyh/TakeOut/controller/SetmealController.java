@@ -9,6 +9,10 @@ import com.wyh.TakeOut.pojo.Setmeal;
 import com.wyh.TakeOut.service.CategoryService;
 import com.wyh.TakeOut.service.SetmealDishService;
 import com.wyh.TakeOut.service.SetmealService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -20,6 +24,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/setmeal")
+@Api(tags = "套餐相关接口")
 public class SetmealController {
     private final SetmealService setmealService;
     private final SetmealDishService setmealDishService;
@@ -35,6 +40,7 @@ public class SetmealController {
     //新增套餐
     @CacheEvict(value = "setmealCache",allEntries = true)
     @PostMapping
+    @ApiOperation("新增套餐接口")
     public R<String> save(@RequestBody SetmealDto setmealDto) {
         setmealService.saveWithDish(setmealDto);
         return R.success("新增套餐成功");
@@ -42,6 +48,12 @@ public class SetmealController {
 
     //分页查询
     @GetMapping("/page")
+    @ApiOperation("套餐分页查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page",value = "页码",required = true),
+            @ApiImplicitParam(name = "pageSize",value = "每页记录数",required = true),
+            @ApiImplicitParam(name = "name",value = "套餐名称",required = false)
+    })
     public R<Page<SetmealDto>> page(int page, int pageSize, String name) {
         //构造分页构造器对象
         Page<Setmeal> setmealPage = new Page<>(page, pageSize);
