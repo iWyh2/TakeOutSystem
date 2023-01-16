@@ -9,11 +9,13 @@ spring:
 #      url: jdbc:mysql://localhost:3306/restaurant?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
 #      username: root
 #      password: '020920'
+
   #Redis配置
   redis:
-    host: localhost
+    #连接linux虚拟机上的redis服务
+    host: 192.168.88.92
     port: 6379
-    #password:
+    password: 123456
     database: 0
   #Spring Cache配置
   cache:
@@ -68,4 +70,4 @@ mybatis-plus:
 
 #自定义变量
 wyh:
-  path: D:\TempFile\takeoutImage\ #外卖菜品套餐图片文件保存路径
+  path: /home/wyh/wyh/JavaWebApps/takeOut/takeoutImage/ #外卖菜品套餐图片文件保存路径 - Linux路径
